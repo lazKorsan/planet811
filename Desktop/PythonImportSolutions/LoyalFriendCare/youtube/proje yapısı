@@ -1,0 +1,22 @@
+Microsoft Windows [Version 10.0.26200.7705]
+(c) Microsoft Corporation. Tüm hakları saklıdır.
+
+C:\Users\user\Desktop\PythonImportSolutions>tree
+Folder PATH listing
+Volume serial number is 96E3-C83C
+C:.
+└───LoyalFriendCare
+    ├───ConReq
+    │   └───__pycache__
+    ├───feature
+    ├───Junk
+    ├───LoyalPages
+    │   └───__pycache__
+    ├───screenshots
+    ├───StepDef
+    ├───tests
+    ├───utils
+    │   └───__pycache__
+    └───youtube
+
+C:\Users\user\Desktop\PythonImportSolutions>tree    

@@ -1,4 +1,4 @@
-# LY004.py
+# LY005.py
 import sys
 import os
 import time
@@ -7,10 +7,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.Driver import create_driver, close_driver, BrowserUtils
 from utils.SendKeysUtils import SendKeysUtils
 from utils.ClickUtils import ClickUtils
+from LoyalPages import HomePages
+from ConReq import testData
 
-
-
-# Yeni Driver yapısıyla driver oluştur
+# Spesifik degerlerle dirver olustur 
 driver = create_driver(
     browser="chrome",
     headless=False,
@@ -21,39 +21,51 @@ driver = create_driver(
     disable_images=False
 )
 
-driver.get("https://qa.loyalfriendcare.com/en")
+# url adresini gir
+driver.get(testData.loginURL)
 
 # Sayfanın yüklenmesini bekle
 BrowserUtils.wait_for_page_load(driver, timeout=10)
 
-ClickUtils.force_click_with_js(
-    driver=driver,
-    xpath="(//*[@href='https://qa.loyalfriendcare.com'])[5]",
-    color="red",
-    button_name="Home Butonu"
-)
-
-time.sleep(3)
-
+# mailBox gecerli E-Posta adresi gir 
 SendKeysUtils.force_send_keys_with_js(
     driver=driver,
-    xpath='//input[@class="form-control"]',
+    xpath=HomePages.mailBox_Xpath,
     color="red",
-    text="re",
-    input_name="Arama Kutusu"
+    text=testData.mail,
+    input_name="Mail Kutusu"
 )
+time.sleep(3)
 
+# passwordBox gecerli E-Posta adresi gir 
+SendKeysUtils.force_send_keys_with_js(
+    driver=driver,
+    xpath=HomePages.passwordBox_Xpath,
+    color="red",
+    text=testData.password,
+    input_name="Şifre Kutusu"
+)
+time.sleep(3)
+
+# sonraki oturumlarda beni hatırla butonuna tıkla
 ClickUtils.force_click_with_js(
     driver=driver,
-    xpath= '//input[@type="submit"]',
+    xpath=HomePages.rememberMeCheckBox_Xpath,
     color="red",
-    button_name="Search Butonu"
+    button_name="Beni Hatırla"
+)
+time.sleep(3)
+# signUpButtona tikla 
+ClickUtils.force_click_with_js(
+    driver=driver,
+    xpath=HomePages.loginButton_Xpath,
+    color="red",
+    button_name="SignUp Butonu"
 )
 
 
 
 
-time.sleep(3)
 
 # Driver'ı kapat
 close_driver(driver)
