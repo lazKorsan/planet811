@@ -5,12 +5,9 @@ import time
 from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-
-
 from utils.SendKeysUtils import SendKeysUtils
 from utils.ClickUtils import ClickUtils
 from LoyalPages import HomePages
-from ConReq import testData
 
 mailBox_Xpath = '//input[@id="email"]'
 passwordBox_Xpath = '//*[@id="password"]'
